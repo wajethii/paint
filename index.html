@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChromaCraft Premium Paints</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2A4B7C',
+                        secondary: '#5F8CB3',
+                        accent: '#E3B04B',
+                        neutral: '#F1F6F9',
+                        dark: '#1D2D44',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Open Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body bg-neutral-50">
+    <!-- Navigation -->
+<header class="bg-white shadow-sm">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4" aria-label="Global">
+    <div class="flex items-center justify-between">
+      <div class="flex lg:flex-1">
+        <a href="index.html" class="-m-1.5 p-1.5">
+          <span class="text-dark font-bold text-xl">ChromaPaints</span>
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button id="mobile-menu-button" type="button"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-dark">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-8">
+        <div class="relative">
+          <button id="products-dropdown-button" type="button"
+            class="flex items-center gap-x-1 text-sm font-semibold text-dark hover:text-primary transition-colors"
+            aria-expanded="false" aria-controls="products-dropdown">
+            Products
+            <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div id="products-dropdown"
+            class="absolute hidden z-10 mt-2 w-full sm:w-64 origin-top-right rounded-lg bg-white shadow-xl ring-1 ring-gray-200 focus:outline-none transition-opacity">
+            <div class="p-2">
+              <a href="/products/interior-paints"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Interior Paints
+              </a>
+              <a href="/products/exterior-paints"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Exterior Paints
+              </a>
+              <a href="/products/specialty-paints"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Specialty Paints
+              </a>
+              <a href="/products/accessories"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Painting Accessories
+              </a>
+            </div>
+            <div class="border-t border-gray-100"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 bg-gray-50/50">
+              <a href="/color-gallery"
+                class="flex items-center justify-center gap-1 p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M4 18a8 8 0 1 1 16 0H4Zm8-10.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+                </svg>
+                Color Gallery
+              </a>
+              <a href="/find-a-stockist"
+                class="flex items-center justify-center gap-1 p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>
+                Find a Store
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="color-gallery.html" class="text-sm font-semibold text-dark hover:text-primary transition-colors">Color Gallery</a>
+        <a href="projects.html" class="text-sm font-semibold text-dark hover:text-primary transition-colors">Projects</a>
+        <a href="contact.html" class="text-sm font-semibold text-primary transition-colors">Contact Us</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a href="request-quote.html"
+          class="text-sm font-semibold text-accent hover:text-cta-hover transition-colors">Request a Quote <span
+            aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-50 overflow-y-auto bg-white px-6 py-6">
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="-m-1.5 p-1.5">
+        <span class="text-dark font-bold text-xl">ChromaPaints</span>
+      </a>
+      <button id="mobile-menu-close" type="button" class="-m-2.5 rounded-md p-2.5 text-dark">
+        <span class="sr-only">Close menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="mt-6 flow-root">
+      <div class="-my-6 divide-y divide-gray-200">
+        <div class="space-y-2 py-6">
+          <div class="-mx-3">
+            <button id="mobile-products-button" type="button"
+              class="flex w-full items-center justify-between rounded-lg py-2 px-3 text-base font-semibold text-dark hover:bg-neutral"
+              aria-expanded="false" aria-controls="mobile-products-dropdown">
+              Products
+              <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div id="mobile-products-dropdown" class="hidden pl-4">
+              <div class="space-y-1">
+                <a href="/products/interior-paints" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Interior Paints</a>
+                <a href="/products/exterior-paints" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Exterior Paints</a>
+                <a href="/products/specialty-paints" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Specialty Paints</a>
+                <a href="/products/accessories" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Painting Accessories</a>
+              </div>
+              <div class="border-t border-gray-100 my-2"></div>
+              <div class="grid grid-cols-1 gap-2 p-2">
+                <a href="/color-gallery" class="flex items-center gap-2 p-2 text-sm font-medium text-gray-700 rounded-md bg-gray-50">
+                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M4 18a8 8 0 1 1 16 0H4Zm8-10.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+                  </svg>
+                  Color Gallery
+                </a>
+                <a href="/find-a-stockist" class="flex items-center gap-2 p-2 text-sm font-medium text-gray-700 rounded-md bg-gray-50">
+                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                  Find a Store
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="color-gallery.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-dark hover:bg-neutral">Color Gallery</a>
+          <a href="projects.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-dark hover:bg-neutral">Projects</a>
+          <a href="contact.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-primary hover:bg-neutral">Contact Us</a>
+        </div>
+        <div class="py-6">
+          <a href="request-quote.html" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-accent hover:bg-neutral">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Hero Section -->
+<section class="relative bg-primary text-white min-h-[90vh] md:min-h-screen">
+    <div class="container max-w-7xl mx-auto h-full px-6 lg:px-8 flex items-center">
+        <div class="relative z-10 flex flex-col md:flex-row items-center h-full w-full">
+            <!-- Content -->
+            <div class="md:w-1/2 py-24 md:py-32 flex flex-col justify-center">
+                <div class="max-w-2xl">
+                    <div class="mb-8">
+                        <span class="bg-white/10 text-sm px-4 py-1.5 rounded-full mb-4 inline-block">
+                            Trusted by 15,000+ Professional Painters
+                        </span>
+                        <h1 class="text-5xl md:text-6xl font-heading font-bold mb-6 leading-tight tracking-tighter">
+                            Premium Paints Engineered for<br class="hidden md:block">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-accent to-yellow-400">Lasting Beauty</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl opacity-95 mb-8 max-w-xl">
+                            Expert-crafted colors with advanced stain resistance<br class="hidden md:block">
+                            and 15-year durability guarantee
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 group">
+                        <a href="#" class="bg-accent hover:bg-yellow-500 text-dark font-bold py-4 px-8 rounded-lg text-center 
+                        transform transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                            <span class="block">Explore Colors</span>
+                            <span class="text-sm font-normal opacity-90">1,500+ Curated Shades</span>
+                        </a>
+                        <a href="#" class="border-2 border-white/40 hover:border-white/80 bg-white/5 hover:bg-white/10 
+                        font-bold py-4 px-8 rounded-lg text-center transition-all duration-300">
+                            <span class="block">Professional Matching</span>
+                            <span class="text-sm font-normal opacity-90">Color Guarantee</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="mt-12 flex items-center gap-6 opacity-90">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <p class="text-sm">Zero VOC Formula · 24hr Cure Time<br>Washable Finish · Eco-Friendly</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="md:w-1/2 h-full order-first md:order-none relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-transparent md:hidden"></div>
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6" alt="Premium paint application" 
+                     class="w-full h-full object-cover object-left md:object-center rounded-l-3xl shadow-2xl"
+                     loading="eager">
+                
+                <!-- Decorative Paint Swatches -->
+                <div class="absolute -left-8 bottom-8 hidden md:block">
+                    <div class="flex gap-4 rotate-[15deg]">
+                        <div class="w-16 h-32 bg-red-500 rounded-lg shadow-xl"></div>
+                        <div class="w-16 h-32 bg-emerald-500 rounded-lg shadow-xl mt-8"></div>
+                        <div class="w-16 h-32 bg-blue-500 rounded-lg shadow-xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block animate-bounce">
+        <svg class="w-8 h-8 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+    </div>
+</section>
+  <!-- Shop by Paint Products -->
+<section id="shopbyproducts" class="py-20 px-6 md:px-20 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 font-heading text-primary">Shop by Product</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore our premium paint products for every surface and finish</p>
+    </div>
+
+    <!-- Product Filters -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="filter-btn px-5 py-2 rounded-full bg-primary hover:bg-primary-dark text-white font-medium transition-colors" data-filter="all">All Products</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 hover:bg-primary/10 font-medium transition-colors" data-filter="interior">Interior Paint</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 hover:bg-primary/10 font-medium transition-colors" data-filter="exterior">Exterior Paint</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 hover:bg-primary/10 font-medium transition-colors" data-filter="primers">Primers</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 hover:bg-primary/10 font-medium transition-colors" data-filter="tools">Painting Tools</button>
+      <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 hover:bg-primary/10 font-medium transition-colors" data-filter="finishes">Specialty Finishes</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid gap-6" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))">
+      <!-- Interior Paint -->
+      <div class="portfolio-item relative overflow-hidden rounded-xl shadow-lg group" data-category="interior">
+        <img src="https://images.unsplash.com/photo-1582582621959-48d27397dc69" alt="Interior Paint" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-2 font-heading">Premium Interior Wall Paint</h3>
+          <p class="text-gray-200">Washable matte finish with stain resistance</p>
+          <span class="mt-3 inline-block bg-primary text-white text-sm px-3 py-1 rounded-full">Low VOC Formula</span>
+        </div>
+      </div>
+
+      <!-- Exterior Paint -->
+      <div class="portfolio-item relative overflow-hidden rounded-xl shadow-lg group" data-category="exterior">
+        <img src="https://images.unsplash.com/photo-1578926375602-4b4f119b1652" alt="Exterior Paint" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-2 font-heading">Weatherproof Exterior Paint</h3>
+          <p class="text-gray-200">UV-resistant coating with 15-year warranty</p>
+          <span class="mt-3 inline-block bg-primary text-white text-sm px-3 py-1 rounded-full">Mold Resistant</span>
+        </div>
+      </div>
+
+      <!-- Primers -->
+      <div class="portfolio-item relative overflow-hidden rounded-xl shadow-lg group" data-category="primers">
+        <img src="https://images.unsplash.com/photo-1569749457947-55b7a9b739db" alt="Paint Primer" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-2 font-heading">Multi-Surface Primer</h3>
+          <p class="text-gray-200">Seals porous surfaces for perfect paint adhesion</p>
+          <span class="mt-3 inline-block bg-primary text-white text-sm px-3 py-1 rounded-full">Fast Drying</span>
+        </div>
+      </div>
+
+      <!-- Painting Tools -->
+      <div class="portfolio-item relative overflow-hidden rounded-xl shadow-lg group" data-category="tools">
+        <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6" alt="Painting Tools" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-2 font-heading">Professional Brush Set</h3>
+          <p class="text-gray-200">Angled synthetic brushes for smooth finishes</p>
+          <span class="mt-3 inline-block bg-primary text-white text-sm px-3 py-1 rounded-full">5-Piece Kit</span>
+        </div>
+      </div>
+
+      <!-- Specialty Finishes -->
+      <div class="portfolio-item relative overflow-hidden rounded-xl shadow-lg group" data-category="finishes">
+        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013" alt="Specialty Finish" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-2 font-heading">Metallic Wall Finish</h3>
+          <p class="text-gray-200">Luxury pearlescent effect for feature walls</p>
+          <span class="mt-3 inline-block bg-primary text-white text-sm px-3 py-1 rounded-full">Designer Collection</span>
+        </div>
+      </div>
+
+      <!-- Color Samples -->
+      <div class="portfolio-item relative overflow-hidden rounded-xl shadow-lg group" data-category="all">
+        <img src="https://images.unsplash.com/photo-1578926375605-ea766f0d4a77" alt="Color Samples" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <h3 class="text-white text-xl font-bold mb-2 font-heading">Color Sample Cards</h3>
+          <p class="text-gray-200">500+ curated colors with coordinated palettes</p>
+          <span class="mt-3 inline-block bg-primary text-white text-sm px-3 py-1 rounded-full">Free Shipping</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="/products" class="px-8 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg shadow-md transition-colors">
+        View Full Catalog
+      </a>
+    </div>
+  </div>
+</section>
+<!--Professional Services-->
+<section class="bg-primary py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <!-- Centered heading with paint-themed wording -->
+        <h2 class="text-4xl font-bold font-heading text-white text-center mb-12 tracking-tighter">
+            Trusted by Professional Paint Dealers
+        </h2>
+
+        <!-- Profession grid with enhanced spacing -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 lg:gap-16">
+            <!-- Individual profession cards -->
+            <a href="#" class="bg-white/10 hover:bg-white/20 transition-all rounded-lg p-6 sm:p-8 text-lg font-semibold text-white hover:text-primary-lightest">
+                Painting Contractors
+            </a>
+            
+            <a href="#" class="bg-white/10 hover:bg-white/20 transition-all rounded-lg p-6 sm:p-8 text-lg font-semibold text-white hover:text-primary-lightest">
+                Interior Designers
+            </a>
+            
+            <a href="#" class="bg-white/10 hover:bg-white/20 transition-all rounded-lg p-6 sm:p-8 text-lg font-semibold text-white hover:text-primary-lightest">
+                Architects
+            </a>
+        </div>
+
+        <!-- Supplemental text -->
+        <p class="text-center text-white/80 mt-12 max-w-2xl mx-auto">
+            Connect with our network of certified professionals for color matching, bulk orders, 
+            and exclusive dealer pricing on premium paints and coatings.
+        </p>
+    </div>
+</section>
+<!-- Paint Collections -->
+<section class="py-16 bg-neutral-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- Header with navigation -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-accent font-semibold">PROFESSIONAL-GRADE FORMULAS</span>
+                <h2 class="text-4xl font-heading font-bold text-gray-900 mt-2">Engineered Color Collections</h2>
+            </div>
+            <a href="#" class="group inline-flex items-center text-primary font-semibold hover:text-primary-dark">
+                View All Collections
+                <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+
+        <!-- Enhanced Collection Grid -->
+        <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <!-- Signature Reserve -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                <div class="relative h-72">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91" 
+                         alt="Signature Reserve collection" 
+                         class="w-full h-full object-cover object-center"
+                         loading="lazy">
+                    <!-- Color Swatches -->
+                    <div class="absolute bottom-4 left-4 flex gap-2">
+                        <div class="w-8 h-8 rounded-full border-2 border-white shadow-lg bg-red-500"></div>
+                        <div class="w-8 h-8 rounded-full border-2 border-white shadow-lg bg-navy-600"></div>
+                        <div class="w-8 h-8 rounded-full border-2 border-white shadow-lg bg-amber-900"></div>
+                    </div>
+                </div>
+                <div class="p-6 lg:p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-heading font-bold text-gray-900">Signature Reserve</h3>
+                        <span class="bg-primary text-white px-3 py-1 rounded-full text-sm">Best Seller</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">Professional-grade finish with 3X stain resistance and 15-year fade protection. Ideal for high-traffic luxury interiors.</p>
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center gap-2 text-gray-600">
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            <span class="text-sm">24-hour dry time</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-600">
+                            <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-sm">Zero VOC Formula</span>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center justify-between w-full bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-6 py-3 rounded-lg transition-colors">
+                        <span>Explore Collection</span>
+                        <span class="text-xl">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Designer Matte -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                <div class="relative h-72">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a" 
+                         alt="Designer Matte collection" 
+                         class="w-full h-full object-cover object-center"
+                         loading="lazy">
+                    <!-- Collection Badge -->
+                    <div class="absolute top-4 right-4 bg-white px-4 py-2 rounded-full shadow-md">
+                        <span class="text-sm font-semibold">200+ Velvet Finishes</span>
+                    </div>
+                </div>
+                <div class="p-6 lg:p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-heading font-bold text-gray-900">Designer Matte</h3>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">New Formula</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">Ultra-smooth finish that camouflages wall imperfections. Washable formula with anti-microbial protection.</p>
+                    <div class="flex gap-4 mb-6">
+                        <div class="flex-1 p-4 bg-neutral-50 rounded-lg text-center">
+                            <p class="text-xl font-bold text-primary">2</p>
+                            <p class="text-sm text-gray-600">Coat Coverage</p>
+                        </div>
+                        <div class="flex-1 p-4 bg-neutral-50 rounded-lg text-center">
+                            <p class="text-xl font-bold text-primary">1hr</p>
+                            <p class="text-sm text-gray-600">Touch Dry</p>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center justify-between w-full bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-6 py-3 rounded-lg transition-colors">
+                        <span>Explore Collection</span>
+                        <span class="text-xl">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Eco-Clean -->
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+                <div class="relative h-72">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" 
+                         alt="Eco-Clean collection" 
+                         class="w-full h-full object-cover object-center"
+                         loading="lazy">
+                    <!-- Sustainability Badge -->
+                    <div class="absolute top-4 left-4 bg-accent text-dark px-4 py-2 rounded-full shadow-md">
+                        <span class="text-sm font-semibold">Carbon Neutral</span>
+                    </div>
+                </div>
+                <div class="p-6 lg:p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-heading font-bold text-gray-900">Eco-Clean</h3>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">LEED Certified</span>
+                    </div>
+                    <p class="text-gray-600 mb-6">Plant-based formula with 98% natural ingredients. Perfect for nurseries, schools, and eco-sensitive spaces.</p>
+                    <div class="mb-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full w-3/4"></div>
+                            </div>
+                            <span class="text-sm text-gray-600">75% Lower Emissions</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full w-full"></div>
+                            </div>
+                            <span class="text-sm text-gray-600">100% Recyclable Packaging</span>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center justify-between w-full bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-6 py-3 rounded-lg transition-colors">
+                        <span>Explore Collection</span>
+                        <span class="text-xl">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Color Visualizer -->
+    <section class="py-16 bg-white">
+        <div class="mx-auto max-w-7xl px-6">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-heading font-bold text-dark mb-6">Try Before You Paint</h2>
+                    <p class="text-gray-700 mb-6">Our virtual color visualizer lets you see how any color will look in your space before you commit. Upload a photo of your room and experiment with different hues, finishes, and combinations.</p>
+                    <p class="text-gray-700 mb-8">Save your favorite combinations and bring them to your local ChromaCraft retailer for color-matched perfection.</p>
+                    <a href="#" class="bg-primary hover:bg-blue-800 text-white font-bold py-3 px-8 rounded inline-block text-center">Try the Visualizer</a>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-100 rounded-xl p-2 shadow-lg">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Color visualizer example" class="rounded-lg w-full">
+                            <div class="absolute bottom-6 left-6 bg-white p-4 rounded-lg shadow-md">
+                                <h4 class="font-bold text-dark mb-2">Current Color: Coastal Fog</h4>
+                                <div class="flex gap-2">
+                                    <div class="w-8 h-8 rounded-full border border-gray-300" style="background-color: #D8E1E7;"></div>
+                                    <div class="w-8 h-8 rounded-full border border-gray-300" style="background-color: #5F8CB3;"></div>
+                                    <div class="w-8 h-8 rounded-full border border-gray-300" style="background-color: #E3B04B;"></div>
+                                    <div class="w-8 h-8 rounded-full border border-gray-300" style="background-color: #2A4B7C;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Color Trends 2025 Section -->
+<section class="py-16 bg-neutral-100">
+    <div class="mx-auto max-w-7xl px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-heading font-bold text-dark mb-4">Color Trends 2025</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Discover the emerging palette that's redefining modern interiors</p>
+        </div>
+        
+        <!-- Color Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            <!-- Color Swatches -->
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #E3DED2">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #5F8CB3">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #4A786A">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #D4B483">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #2A4B7C">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #8C4F66">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+        </div>
+
+        <!-- Additional Colors (Hidden by Default) -->
+        <div id="moreColors" class="hidden grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #C9B1A2">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #6E9075">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #E3B04B">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #9FA4A8">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #3C2F2D">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+            <div class="group relative h-32 rounded-lg shadow-md transition-transform hover:scale-105 cursor-pointer" style="background-color: #D8E1E7">
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all rounded-lg"></div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button id="exploreMore" class="bg-accent hover:bg-yellow-600 text-dark font-bold py-3 px-8 rounded transition-colors" onclick="toggleColors()">
+                Explore More
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+function toggleColors() {
+    const moreColors = document.getElementById('moreColors');
+    const button = document.getElementById('exploreMore');
+    
+    if (moreColors.classList.contains('hidden')) {
+        moreColors.classList.remove('hidden');
+        button.textContent = 'Show Less';
+        button.classList.add('bg-yellow-600');
+    } else {
+        moreColors.classList.add('hidden');
+        button.textContent = 'Explore More';
+        button.classList.remove('bg-yellow-600');
+    }
+}
+</script>
+
+    <!-- Inspiration Gallery -->
+    <section class="py-16 bg-white">
+        <div class="mx-auto max-w-7xl px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-heading font-bold text-dark mb-4">Design Inspiration</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover beautiful spaces painted with ChromaCraft colors</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Living room inspiration" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-heading font-bold">Modern Living Room</h3>
+                        <p>Color: Slate Whisper</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bedroom inspiration" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-heading font-bold">Serene Bedroom</h3>
+                        <p>Color: Misty Morning</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg shadow-md">
+                    <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kitchen inspiration" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-heading font-bold">Chef's Kitchen</h3>
+                        <p>Color: Golden Wheat</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded">View More Inspiration</a>
+            </div>
+        </div>
+    </section>
+<!-- Find a Store -->
+<section class="py-16 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row items-center gap-12 xl:gap-16">
+            <!-- Interactive Map Section -->
+            <div class="w-full lg:w-1/2 relative">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white transform hover:scale-[1.01] transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1571494146906-86de15d3817b" 
+                         alt="Store locations map" 
+                         class="w-full h-96 object-cover object-center"
+                         loading="lazy">
+                    <div class="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-full shadow-md">
+                        <span class="text-sm font-semibold">📍 850+ Locations Nationwide</span>
+                    </div>
+                </div>
+                
+                <!-- Stats Badge -->
+                <div class="absolute -right-4 -top-4 bg-primary text-white px-6 py-3 rounded-2xl shadow-lg rotate-3">
+                    <div class="text-center">
+                        <p class="text-2xl font-bold">98%</p>
+                        <p class="text-xs">Customer Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Section -->
+            <div class="w-full lg:w-1/2">
+                <div class="max-w-xl">
+                    <h2 class="text-4xl font-heading font-bold mb-6 text-gray-900">
+                        Find Your Perfect Color Partner
+                        <span class="block text-lg mt-2 font-normal text-gray-600">Expert Advice Meets Premium Products</span>
+                    </h2>
+                    
+                    <!-- Search Form -->
+                    <form class="mb-8 group">
+                        <div class="relative">
+                            <input type="text" 
+                                   placeholder="Enter ZIP code" 
+                                   class="w-full px-6 py-4 rounded-full border-2 border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 text-lg transition-all placeholder:text-gray-400"
+                                   x-mask:dynamic="99999?99999">
+                            <button type="submit" 
+                                    class="absolute right-2 top-2 bg-accent hover:bg-yellow-500 text-dark font-bold px-8 py-2 rounded-full transition-all 
+                                           transform hover:scale-105 active:scale-95 shadow-md">
+                                Search
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2 ml-4">Available in all 50 states</p>
+                    </form>
+
+                    <!-- Value Proposition Cards -->
+                    <div class="space-y-4">
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 hover:border-primary/20 transition-all group">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Local Expertise</h3>
+                                    <p class="text-gray-600">Get personalized recommendations from paint professionals who know your regional style and climate needs</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 hover:border-primary/20 transition-all group">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-primary/10 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Digital Color Matching</h3>
+                                    <p class="text-gray-600">Use our store kiosks to scan any color and get perfect matches from our 2,000+ shade collection</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="mx-auto max-w-7xl px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-heading font-bold mb-4">ChromaCraft</h3>
+                    <p class="text-gray-400">Premium paints for beautiful spaces. Crafted with care, designed to inspire.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Products</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-accent transition-colors">Interior Paints</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Exterior Paints</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Primers</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Stains</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Tools & Supplies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-accent transition-colors">Color Visualizer</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">How-To Guides</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Paint Calculator</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Trend Reports</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-accent transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Press</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2024 ChromaCraft Paints. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-gray-500 hover:text-accent transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-accent">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-accent">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-accent">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+    const productsDropdownButton = document.getElementById('products-dropdown-button');
+    const productsDropdown = document.getElementById('products-dropdown');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuCloseButton = document.getElementById('mobile-menu-close');
+    const mobileProductsButton = document.getElementById('mobile-products-button');
+    const mobileProductsDropdown = document.getElementById('mobile-products-dropdown');
+
+    // Desktop Products Dropdown
+    if (productsDropdownButton && productsDropdown) {
+        productsDropdownButton.addEventListener('click', () => {
+            const expanded = productsDropdownButton.getAttribute('aria-expanded') === 'true' || false;
+            productsDropdownButton.setAttribute('aria-expanded', !expanded);
+            productsDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (productsDropdown && !productsDropdown.contains(event.target) && productsDropdownButton && !productsDropdownButton.contains(event.target)) {
+                productsDropdownButton.setAttribute('aria-expanded', 'false');
+                productsDropdown.classList.add('hidden');
+            }
+        });
+    }
+
+    // Mobile Menu
+    if (mobileMenuButton && mobileMenu && mobileMenuCloseButton) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+        });
+
+        mobileMenuCloseButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    // Mobile Products Dropdown
+    if (mobileProductsButton && mobileProductsDropdown) {
+        mobileProductsButton.addEventListener('click', () => {
+            const expanded = mobileProductsButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileProductsButton.setAttribute('aria-expanded', !expanded);
+            mobileProductsDropdown.classList.toggle('hidden');
+        });
+    }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  // Initialize filter
+  filterProducts('all');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('bg-primary', 'text-white'));
+      
+      // Add active class to clicked button
+      this.classList.add('bg-primary', 'text-white');
+      this.classList.remove('border', 'border-gray-300');
+      
+      // Get filter value and trigger filtering
+      const filterValue = this.dataset.filter;
+      filterProducts(filterValue);
+    });
+  });
+
+  function filterProducts(filterValue) {
+    portfolioItems.forEach(item => {
+      const category = item.dataset.category;
+      
+      if (filterValue === 'all' || category === filterValue) {
+        item.style.display = 'block';
+        setTimeout(() => item.style.opacity = 1, 50);
+      } else {
+        item.style.opacity = 0;
+        setTimeout(() => item.style.display = 'none', 300);
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>

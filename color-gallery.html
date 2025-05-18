@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Families | ChromaCraft Premium Paints</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 8px;
+        }
+        .color-swatch {
+            height: 60px;
+            border-radius: 4px;
+            cursor: pointer;
+       
+        }
+       
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.active {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+        .rotate-45 {
+            transform: rotate(45deg);
+        }
+        .family-header {
+            transition: background-color 0.2s ease;
+        }
+       
+    </style>
+</head>
+<body class="font-sans">
+       <!-- Navigation -->
+<header class="bg-white shadow-sm">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4" aria-label="Global">
+    <div class="flex items-center justify-between">
+      <div class="flex lg:flex-1">
+        <a href="index.html" class="-m-1.5 p-1.5">
+          <span class="text-dark font-bold text-xl">ChromaPaints</span>
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button id="mobile-menu-button" type="button"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-dark">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-8">
+        <div class="relative">
+          <button id="products-dropdown-button" type="button"
+            class="flex items-center gap-x-1 text-sm font-semibold text-dark hover:text-primary transition-colors"
+            aria-expanded="false" aria-controls="products-dropdown">
+            Products
+            <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div id="products-dropdown"
+            class="absolute hidden z-10 mt-2 w-full sm:w-64 origin-top-right rounded-lg bg-white shadow-xl ring-1 ring-gray-200 focus:outline-none transition-opacity">
+            <div class="p-2">
+              <a href="/products/interior-paints"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Interior Paints
+              </a>
+              <a href="/products/exterior-paints"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Exterior Paints
+              </a>
+              <a href="/products/specialty-paints"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Specialty Paints
+              </a>
+              <a href="/products/accessories"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-md">
+                Painting Accessories
+              </a>
+            </div>
+            <div class="border-t border-gray-100"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-gray-100 bg-gray-50/50">
+              <a href="/color-gallery"
+                class="flex items-center justify-center gap-1 p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M4 18a8 8 0 1 1 16 0H4Zm8-10.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+                </svg>
+                Color Gallery
+              </a>
+              <a href="/find-a-stockist"
+                class="flex items-center justify-center gap-1 p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>
+                Find a Store
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="color-gallery.html" class="text-sm font-semibold text-dark hover:text-primary transition-colors">Color Gallery</a>
+        <a href="projects.html" class="text-sm font-semibold text-dark hover:text-primary transition-colors">Projects</a>
+        <a href="contact.html" class="text-sm font-semibold text-primary transition-colors">Contact Us</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a href="request-quote.html"
+          class="text-sm font-semibold text-accent hover:text-cta-hover transition-colors">Request a Quote <span
+            aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-50 overflow-y-auto bg-white px-6 py-6">
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="-m-1.5 p-1.5">
+        <span class="text-dark font-bold text-xl">ChromaPaints</span>
+      </a>
+      <button id="mobile-menu-close" type="button" class="-m-2.5 rounded-md p-2.5 text-dark">
+        <span class="sr-only">Close menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="mt-6 flow-root">
+      <div class="-my-6 divide-y divide-gray-200">
+        <div class="space-y-2 py-6">
+          <div class="-mx-3">
+            <button id="mobile-products-button" type="button"
+              class="flex w-full items-center justify-between rounded-lg py-2 px-3 text-base font-semibold text-dark hover:bg-neutral"
+              aria-expanded="false" aria-controls="mobile-products-dropdown">
+              Products
+              <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div id="mobile-products-dropdown" class="hidden pl-4">
+              <div class="space-y-1">
+                <a href="/products/interior-paints" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Interior Paints</a>
+                <a href="/products/exterior-paints" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Exterior Paints</a>
+                <a href="/products/specialty-paints" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Specialty Paints</a>
+                <a href="/products/accessories" class="block px-4 py-2 text-sm text-gray-700 rounded-md">Painting Accessories</a>
+              </div>
+              <div class="border-t border-gray-100 my-2"></div>
+              <div class="grid grid-cols-1 gap-2 p-2">
+                <a href="/color-gallery" class="flex items-center gap-2 p-2 text-sm font-medium text-gray-700 rounded-md bg-gray-50">
+                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M4 18a8 8 0 1 1 16 0H4Zm8-10.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+                  </svg>
+                  Color Gallery
+                </a>
+                <a href="/find-a-stockist" class="flex items-center gap-2 p-2 text-sm font-medium text-gray-700 rounded-md bg-gray-50">
+                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                  Find a Store
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="color-gallery.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-dark hover:bg-neutral">Color Gallery</a>
+          <a href="projects.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-dark hover:bg-neutral">Projects</a>
+          <a href="contact.html" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-primary hover:bg-neutral">Contact Us</a>
+        </div>
+        <div class="py-6">
+          <a href="request-quote.html" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-accent hover:bg-neutral">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Page Header -->
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Explore Our Color Families</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Discover ChromaCraft's complete palette organized by color family. 
+                Each collection offers harmonious shades perfect for any project.
+            </p>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="mb-8 bg-white rounded-xl p-6">
+            <div class="flex flex-col md:flex-row gap-4 items-center">
+                <div class="relative flex-grow max-w-2xl">
+                    <input 
+                        type="text" 
+                        placeholder="Search colors by name or number (e.g. 'CC-125' or 'Crimson')" 
+                        class="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    >
+                    <svg class="absolute left-4 top-3.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+                <button class="flex items-center gap-2 bg-gray-900 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg whitespace-nowrap transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                    </svg>
+                    Filter Colors
+                </button>
+            </div>
+        </div>
+
+        <!-- Color Families Accordion -->
+        <div class="space-y-4">
+            <!-- Red Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-red-700 text-white"
+                    aria-expanded="false"
+                    aria-controls="red-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Red Family</span>
+                    </div>
+                    <span class="text-white/90">602 colors available</span>
+                </button>
+                <div id="red-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            Our red family ranges from vibrant crimsons to soft blushes, perfect for creating 
+                            bold statements or subtle accents. These warm tones work beautifully in living 
+                            spaces, dining rooms, and exteriors.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample red colors -->
+                            <div class="color-swatch bg-red-50" title="Blush Pink (CC-101)"></div>
+                            <div class="color-swatch bg-red-100" title="Rose Quartz (CC-102)"></div>
+                            <div class="color-swatch bg-red-200" title="Coral Blush (CC-103)"></div>
+                            <div class="color-swatch bg-red-300" title="Peony (CC-104)"></div>
+                            <div class="color-swatch bg-red-400" title="Cherry Red (CC-105)"></div>
+                            <div class="color-swatch bg-red-500" title="Poppy (CC-106)"></div>
+                            <div class="color-swatch bg-red-600" title="Fire Engine (CC-107)"></div>
+                            <div class="color-swatch bg-red-700" title="Crimson (CC-108)"></div>
+                            <div class="color-swatch bg-red-800" title="Burgundy (CC-109)"></div>
+                            <div class="color-swatch bg-red-900" title="Oxblood (CC-110)"></div>
+                            <div class="color-swatch bg-rose-50" title="Petal Pink (CC-111)"></div>
+                            <div class="color-swatch bg-rose-100" title="Blush (CC-112)"></div>
+                            <div class="color-swatch bg-rose-200" title="Tea Rose (CC-113)"></div>
+                            <div class="color-swatch bg-rose-300" title="Salmon (CC-114)"></div>
+                            <div class="color-swatch bg-rose-400" title="Watermelon (CC-115)"></div>
+                            <div class="color-swatch bg-rose-500" title="Flamingo (CC-116)"></div>
+                            <div class="color-swatch bg-rose-600" title="Ruby (CC-117)"></div>
+                            <div class="color-swatch bg-rose-700" title="Garnet (CC-118)"></div>
+                            <div class="color-swatch bg-rose-800" title="Merlot (CC-119)"></div>
+                            <div class="color-swatch bg-rose-900" title="Wine (CC-120)"></div>
+                            <!-- More colors would be dynamically generated -->
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-red-700 font-medium hover:underline">
+                                View all 602 red colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orange Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-orange-500 text-white"
+                    aria-expanded="false"
+                    aria-controls="orange-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Orange Family</span>
+                    </div>
+                    <span class="text-white/90">518 colors available</span>
+                </button>
+                <div id="orange-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            Energizing and warm, our orange palette includes everything from soft peaches 
+                            to vibrant tangerines. These hues bring warmth to any space and pair beautifully 
+                            with neutrals and blues.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample orange colors -->
+                            <div class="color-swatch bg-orange-50" title="Creamsicle (CC-201)"></div>
+                            <div class="color-swatch bg-orange-100" title="Apricot (CC-202)"></div>
+                            <div class="color-swatch bg-orange-200" title="Peach (CC-203)"></div>
+                            <div class="color-swatch bg-orange-300" title="Cantaloupe (CC-204)"></div>
+                            <div class="color-swatch bg-orange-400" title="Marigold (CC-205)"></div>
+                            <div class="color-swatch bg-orange-500" title="Pumpkin (CC-206)"></div>
+                            <div class="color-swatch bg-orange-600" title="Amber (CC-207)"></div>
+                            <div class="color-swatch bg-orange-700" title="Rust (CC-208)"></div>
+                            <div class="color-swatch bg-orange-800" title="Terracotta (CC-209)"></div>
+                            <div class="color-swatch bg-orange-900" title="Burnt Sienna (CC-210)"></div>
+                            <div class="color-swatch bg-amber-50" title="Buttercream (CC-211)"></div>
+                            <div class="color-swatch bg-amber-100" title="Honey (CC-212)"></div>
+                            <div class="color-swatch bg-amber-200" title="Goldenrod (CC-213)"></div>
+                            <div class="color-swatch bg-amber-300" title="Sunflower (CC-214)"></div>
+                            <div class="color-swatch bg-amber-400" title="Mustard (CC-215)"></div>
+                            <div class="color-swatch bg-amber-500" title="Golden (CC-216)"></div>
+                            <div class="color-swatch bg-amber-600" title="Amber Glow (CC-217)"></div>
+                            <div class="color-swatch bg-amber-700" title="Bronze (CC-218)"></div>
+                            <div class="color-swatch bg-amber-800" title="Copper (CC-219)"></div>
+                            <div class="color-swatch bg-amber-900" title="Dark Amber (CC-220)"></div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-orange-600 font-medium hover:underline">
+                                View all 518 orange colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yellow Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-yellow-400 text-gray-900"
+                    aria-expanded="false"
+                    aria-controls="yellow-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Yellow Family</span>
+                    </div>
+                    <span class="text-gray-900/90">240 colors available</span>
+                </button>
+                <div id="yellow-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            From soft buttery tones to vibrant golden hues, our yellow collection brings 
+                            sunshine to any space. Perfect for kitchens, bathrooms, and spaces that need 
+                            a cheerful lift.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample yellow colors -->
+                            <div class="color-swatch bg-yellow-50" title="Lemon Chiffon (CC-301)"></div>
+                            <div class="color-swatch bg-yellow-100" title="Buttercream (CC-302)"></div>
+                            <div class="color-swatch bg-yellow-200" title="Daffodil (CC-303)"></div>
+                            <div class="color-swatch bg-yellow-300" title="Sunshine (CC-304)"></div>
+                            <div class="color-swatch bg-yellow-400" title="Goldenrod (CC-305)"></div>
+                            <div class="color-swatch bg-yellow-500" title="Mustard (CC-306)"></div>
+                            <div class="color-swatch bg-yellow-600" title="Honey (CC-307)"></div>
+                            <div class="color-swatch bg-yellow-700" title="Amber (CC-308)"></div>
+                            <div class="color-swatch bg-yellow-800" title="Golden Brown (CC-309)"></div>
+                            <div class="color-swatch bg-yellow-900" title="Olive Gold (CC-310)"></div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-yellow-600 font-medium hover:underline">
+                                View all 240 yellow colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Green Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-green-700 text-white"
+                    aria-expanded="false"
+                    aria-controls="green-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Green Family</span>
+                    </div>
+                    <span class="text-white/90">619 colors available</span>
+                </button>
+                <div id="green-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            Nature-inspired greens ranging from fresh sage to deep forest hues. These 
+                            versatile colors create calming environments and work well in bedrooms, 
+                            offices, and exteriors.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample green colors -->
+                            <div class="color-swatch bg-green-50" title="Mint Cream (CC-401)"></div>
+                            <div class="color-swatch bg-green-100" title="Seafoam (CC-402)"></div>
+                            <div class="color-swatch bg-green-200" title="Sage (CC-403)"></div>
+                            <div class="color-swatch bg-green-300" title="Jade (CC-404)"></div>
+                            <div class="color-swatch bg-green-400" title="Emerald (CC-405)"></div>
+                            <div class="color-swatch bg-green-500" title="Kelly Green (CC-406)"></div>
+                            <div class="color-swatch bg-green-600" title="Forest (CC-407)"></div>
+                            <div class="color-swatch bg-green-700" title="Hunter (CC-408)"></div>
+                            <div class="color-swatch bg-green-800" title="Pine (CC-409)"></div>
+                            <div class="color-swatch bg-green-900" title="Evergreen (CC-410)"></div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-green-700 font-medium hover:underline">
+                                View all 619 green colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blue Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-blue-600 text-white"
+                    aria-expanded="false"
+                    aria-controls="blue-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Blue Family</span>
+                    </div>
+                    <span class="text-white/90">409 colors available</span>
+                </button>
+                <div id="blue-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            Our blue collection offers everything from pale sky tones to deep navy shades. 
+                            These calming hues are perfect for creating serene bedrooms, bathrooms, and 
+                            coastal-inspired spaces.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample blue colors -->
+                            <div class="color-swatch bg-blue-50" title="Sky Mist (CC-501)"></div>
+                            <div class="color-swatch bg-blue-100" title="Baby Blue (CC-502)"></div>
+                            <div class="color-swatch bg-blue-200" title="Cornflower (CC-503)"></div>
+                            <div class="color-swatch bg-blue-300" title="Azure (CC-504)"></div>
+                            <div class="color-swatch bg-blue-400" title="Cerulean (CC-505)"></div>
+                            <div class="color-swatch bg-blue-500" title="Sapphire (CC-506)"></div>
+                            <div class="color-swatch bg-blue-600" title="Cobalt (CC-507)"></div>
+                            <div class="color-swatch bg-blue-700" title="Navy (CC-508)"></div>
+                            <div class="color-swatch bg-blue-800" title="Midnight (CC-509)"></div>
+                            <div class="color-swatch bg-blue-900" title="Deep Ocean (CC-510)"></div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-blue-700 font-medium hover:underline">
+                                View all 409 blue colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purple Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-purple-700 text-white"
+                    aria-expanded="false"
+                    aria-controls="purple-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Purple Family</span>
+                    </div>
+                    <span class="text-white/90">233 colors available</span>
+                </button>
+                <div id="purple-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            From soft lavenders to rich eggplants, our purple palette offers sophisticated 
+                            options for creative spaces. These hues work beautifully in bedrooms, accent 
+                            walls, and creative studios.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample purple colors -->
+                            <div class="color-swatch bg-purple-50" title="Lavender Mist (CC-601)"></div>
+                            <div class="color-swatch bg-purple-100" title="Lilac (CC-602)"></div>
+                            <div class="color-swatch bg-purple-200" title="Wisteria (CC-603)"></div>
+                            <div class="color-swatch bg-purple-300" title="Orchid (CC-604)"></div>
+                            <div class="color-swatch bg-purple-400" title="Amethyst (CC-605)"></div>
+                            <div class="color-swatch bg-purple-500" title="Royal Purple (CC-606)"></div>
+                            <div class="color-swatch bg-purple-600" title="Grape (CC-607)"></div>
+                            <div class="color-swatch bg-purple-700" title="Eggplant (CC-608)"></div>
+                            <div class="color-swatch bg-purple-800" title="Plum (CC-609)"></div>
+                            <div class="color-swatch bg-purple-900" title="Aubergine (CC-610)"></div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-purple-700 font-medium hover:underline">
+                                View all 233 purple colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gray Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-gray-600 text-white"
+                    aria-expanded="false"
+                    aria-controls="gray-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Gray Family</span>
+                    </div>
+                    <span class="text-white/90">425 colors available</span>
+                </button>
+                <div id="gray-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            Sophisticated grays from barely-there tints to deep charcoals. These versatile 
+                            neutrals serve as perfect backdrops or elegant main colors for any space.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample gray colors -->
+                            <div class="color-swatch bg-gray-50" title="White Smoke (CC-701)"></div>
+                            <div class="color-swatch bg-gray-100" title="Cloud (CC-702)"></div>
+                            <div class="color-swatch bg-gray-200" title="Silver (CC-703)"></div>
+                            <div class="color-swatch bg-gray-300" title="Ash (CC-704)"></div>
+                            <div class="color-swatch bg-gray-400" title="Pewter (CC-705)"></div>
+                            <div class="color-swatch bg-gray-500" title="Steel (CC-706)"></div>
+                            <div class="color-swatch bg-gray-600" title="Slate (CC-707)"></div>
+                            <div class="color-swatch bg-gray-700" title="Charcoal (CC-708)"></div>
+                            <div class="color-swatch bg-gray-800" title="Graphite (CC-709)"></div>
+                            <div class="color-swatch bg-gray-900" title="Raven (CC-710)"></div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-gray-700 font-medium hover:underline">
+                                View all 425 gray colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Neutral Family -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <button 
+                    class="accordion-toggle family-header w-full flex items-center justify-between px-6 py-5 text-left bg-stone-600 text-white"
+                    aria-expanded="false"
+                    aria-controls="neutral-family"
+                >
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-xl font-semibold">Neutral Family</span>
+                    </div>
+                    <span class="text-white/90">796 colors available</span>
+                </button>
+                <div id="neutral-family" class="accordion-content">
+                    <div class="px-6 pb-6">
+                        <p class="text-gray-700 mb-6">
+                            Our comprehensive neutral collection includes warm taupes, cool greiges, and 
+                            everything in between. These timeless shades create perfect backdrops for any 
+                            design style.
+                        </p>
+                        <div class="color-grid">
+                            <!-- Sample neutral colors -->
+                            <div class="color-swatch bg-stone-50" title="Alabaster (CC-801)"></div>
+                            <div class="color-swatch bg-stone-100" title="Linen (CC-802)"></div>
+                            <div class="color-swatch bg-stone-200" title="Sand Dollar (CC-803)"></div>
+                            <div class="color-swatch bg-stone-300" title="Taupe (CC-804)"></div>
+                            <div class="color-swatch bg-stone-400" title="Greige (CC-805)"></div>
+                            <div class="color-swatch bg-stone-500" title="Stone (CC-806)"></div>
+                            <div class="color-swatch bg-stone-600" title="Driftwood (CC-807)"></div>
+                            <div class="color-swatch bg-stone-700" title="Mocha (CC-808)"></div>
+                            <div class="color-swatch bg-stone-800" title="Espresso (CC-809)"></div>
+                            <div class="color-swatch bg-stone-900" title="Black Bean (CC-810)"></div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-stone-700 font-medium hover:underline">
+                                View all 796 neutral colors
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="bg-white rounded-xl shadow-sm p-12 mt-12 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Need Help Choosing Colors?</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Our color experts can help you find the perfect palette for your project. 
+                Visit a ChromaCraft retailer near you for personalized advice.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="inline-flex items-center justify-center bg-gray-900 hover:bg-gray-700 text-white font-medium py-3 px-8 rounded-lg transition-colors">
+                    Find a Store
+                </a>
+                <a href="#" class="inline-flex items-center justify-center border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-3 px-8 rounded-lg transition-colors">
+                    Book Color Consultation
+                </a>
+            </div>
+        </div>
+    </div>
+<script>
+    const productsDropdownButton = document.getElementById('products-dropdown-button');
+    const productsDropdown = document.getElementById('products-dropdown');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuCloseButton = document.getElementById('mobile-menu-close');
+    const mobileProductsButton = document.getElementById('mobile-products-button');
+    const mobileProductsDropdown = document.getElementById('mobile-products-dropdown');
+
+    // Desktop Products Dropdown
+    if (productsDropdownButton && productsDropdown) {
+        productsDropdownButton.addEventListener('click', () => {
+            const expanded = productsDropdownButton.getAttribute('aria-expanded') === 'true' || false;
+            productsDropdownButton.setAttribute('aria-expanded', !expanded);
+            productsDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (event) => {
+            if (productsDropdown && !productsDropdown.contains(event.target) && productsDropdownButton && !productsDropdownButton.contains(event.target)) {
+                productsDropdownButton.setAttribute('aria-expanded', 'false');
+                productsDropdown.classList.add('hidden');
+            }
+        });
+    }
+
+    // Mobile Menu
+    if (mobileMenuButton && mobileMenu && mobileMenuCloseButton) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+        });
+
+        mobileMenuCloseButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    // Mobile Products Dropdown
+    if (mobileProductsButton && mobileProductsDropdown) {
+        mobileProductsButton.addEventListener('click', () => {
+            const expanded = mobileProductsButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileProductsButton.setAttribute('aria-expanded', !expanded);
+            mobileProductsDropdown.classList.toggle('hidden');
+        });
+    }
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionToggles = document.querySelectorAll('.accordion-toggle');
+            
+            accordionToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    const targetId = this.getAttribute('aria-controls');
+                    const target = document.getElementById(targetId);
+                    const icon = this.querySelector('svg');
+                    
+                    // Close all other accordions
+                    accordionToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            const otherTargetId = otherToggle.getAttribute('aria-controls');
+                            const otherTarget = document.getElementById(otherTargetId);
+                            const otherIcon = otherToggle.querySelector('svg');
+                            
+                            otherTarget.classList.remove('active');
+                            otherIcon.classList.remove('rotate-45');
+                        }
+                    });
+                    
+                    // Toggle current accordion
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    target.classList.toggle('active');
+                    icon.classList.toggle('rotate-45');
+                    
+                    // Scroll to the accordion if opening
+                    if (!isExpanded) {
+                        setTimeout(() => {
+                            toggle.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 100);
+                    }
+                });
+            });
+            
+            // Add tooltips to color swatches
+            const colorSwatches = document.querySelectorAll('.color-swatch');
+            colorSwatches.forEach(swatch => {
+                const title = swatch.getAttribute('title');
+                if (title) {
+                    swatch.addEventListener('mouseenter', function() {
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'absolute bg-gray-900 text-white text-xs py-1 px-2 rounded -mt-10 z-10';
+                        tooltip.textContent = title;
+                        this.appendChild(tooltip);
+                        
+                        // Position tooltip
+                        const rect = this.getBoundingClientRect();
+                        tooltip.style.left = '50%';
+                        tooltip.style.transform = 'translateX(-50%)';
+                    });
+                    
+                    swatch.addEventListener('mouseleave', function() {
+                        const tooltip = this.querySelector('div');
+                        if (tooltip) {
+                            this.removeChild(tooltip);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
