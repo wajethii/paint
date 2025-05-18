@@ -25,6 +25,7 @@
         }
     </script>
     <style>
+        
         .color-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
@@ -115,6 +116,7 @@
         }
         .finish-badge {
             position: absolute;
+            z-index: 20;
             top: 8px;
             right: 8px;
             background: rgba(255,255,255,0.9);
@@ -692,6 +694,8 @@
                     });
                 }
             });
+             // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
     </script>
 </body>
